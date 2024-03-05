@@ -7,3 +7,7 @@ Technologies used:
 - Vite
 - React
 - Redux Toolkit
+- Axios
+- Tailwind CSS
+- Notiflix
+- react-loader-spinner
