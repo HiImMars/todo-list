@@ -9,6 +9,7 @@ import {
   getTodos,
   updateTodoCompleted,
 } from "../../redux/todos/operations.js";
+import { Triangle } from "react-loader-spinner";
 
 import { useEffect, useState } from "react";
 
@@ -49,7 +50,19 @@ export const TodoList = () => {
 
   return (
     <>
-      {isLoading && <p>Loading, please wait</p>}
+      {isLoading && (
+        // <p>Load</p>
+        <div className="bg-[rgba(0 0 0 0.5)] w-full">
+          <Triangle
+            height="80"
+            width="80"
+            radius="9"
+            color="green"
+            ariaLabel="loading"
+            className="z-50"
+          />
+        </div>
+      )}
       {error && <p>Something went wrong</p>}
       <ul className="flex w-full justify-center items-center gap-5">
         <li>
