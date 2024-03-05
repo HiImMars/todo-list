@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectTodos } from "../../redux/todos/selectors.js";
 import { addTodo } from "../../redux/todos/operations.js";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 export const TodoForm = () => {
   const todos = useSelector(selectTodos);
@@ -26,6 +27,8 @@ export const TodoForm = () => {
           `ToDo with that ${title} or ${description} is already present in your ToDo list.`
         )
       : dispatch(addTodo({ title: title, description: description }));
+
+    Notify.success("New task was added!");
 
     form.reset();
   };

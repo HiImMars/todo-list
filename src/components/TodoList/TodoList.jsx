@@ -10,7 +10,7 @@ import {
   updateTodoCompleted,
 } from "../../redux/todos/operations.js";
 import { Triangle } from "react-loader-spinner";
-
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 import { useEffect, useState } from "react";
 
 export const TodoList = () => {
@@ -37,6 +37,7 @@ export const TodoList = () => {
 
   const handleDeleteTodo = (todoId) => {
     dispatch(deleteTodo(todoId));
+    Notify.warning("Task was deleted");
   };
 
   const handleToggleCompleted = (todoId, completed) => {
@@ -51,19 +52,18 @@ export const TodoList = () => {
   return (
     <>
       {isLoading && (
-        // <p>Load</p>
-        <div className="bg-[rgba(0 0 0 0.5)] w-full">
+        <div className="bg-[rgba(0,0,0,0.7)] w-full h-full fixed top-0 left-0 flex justify-center items-center">
           <Triangle
             height="80"
             width="80"
             radius="9"
-            color="green"
+            color="white"
             ariaLabel="loading"
             className="z-50"
           />
         </div>
       )}
-      {error && <p>Something went wrong</p>}
+      {error && <p className="text-xl font-semibold">Something went wrong</p>}
       <ul className="flex w-full justify-center items-center gap-5">
         <li>
           <button
